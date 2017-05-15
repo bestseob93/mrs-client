@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" charset="utf-8"></script>
+
+    <title>Medical Recording System</title>
+
+    <style>
+
+        .btn-container {
+            width: 100%;
+            padding: 30px 60px 30px 60px;
+        }
+
+        .bed-background-left {
+            background-image: url("bed_left.png");
+            background-size: cover;
+            width: 100px;
+            height: 46px;
+            background-repeat: no-repeat;
+        }
+
+        .bed-background-right {
+            background-image: url("bed_right.png");
+            background-size: cover;
+            width: 100px;
+            height: 46px;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+        }
+
+        .fullheight {
+            height: 800px;
+        }
+
+        .user {
+            height: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header class="container-fluid center teal darken-3">
+        <div class="row">
+            <div class="col s3 white-text"><br><br>instagram </div>
+            <div class="input-field col s6">
+                <input text="search" type="text" class="validate">
+            </div>
+        </div>
+    </header>
+      <div class="row">
+            <div class="col s2 white">
+                <div class="row center-align">
+                    <div class="black-text center-align">
+                        <p >이환섭님 <br/>환영합니다.<br/><br/></p>
+                    </div>
+                    <div class="white-text"><a class="waves-effect waves-light btn-large">환자정보</a></div>
+                    <div class="white-text"><a class="waves-effect waves-light btn-large">투약정보</a></div>
+                    <div class="white-text"><a class="waves-effect waves-light btn-large">병원정보</a></div>
+                    <div class="white-text"><a class="waves-effect waves-light btn-large">침상현황</a></div>
+
+                </div>
+            </div>  <!-- 여기까지 네비게이션 바-->
+
+
+            <!--침상정보 모달 (반복문 돌릴 것)-->
+
+            <div id="bed1" class="modal">
+                <div class="modal-content">
+                    <div class="row"><h4>침상정보</h4></div>
+                    <div class="row">
+                        <div class="col s9">이름:
+                            <div>성별 : </div>
+                            <div>전화번호 : </div>
+                            <div>생일 : </div>
+                            <div>주소 : </div>
+                            <div>혈액형 : </div>
+                            <div>담당의사 : </div>
+                            <div>병명 : </div>
+                            <div>투여중 : </div>
+                            <div>특이사항</div>
+                        </div>
+                        <div class="col s3">환자 사진</div>
+                        <div><img title="환자 사진" src="##" alt="환자 사진" width="20%"></div>
+                    </div>
+                </div>
+
+                <div class="row modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">확인</a>
+                </div>
+            </div>
+
+
+            <!--여기부터 실제 침상확인 코드-->
+            <div class="col s10">
+                <div class="row" style="margin-bottom:0px;">
+                    <div class="input-field col offset-s1 s5">
+                        <select>
+                            <option value="" disabled selected>건물을 선택하세요</option>
+                            <option value="1">1층</option>
+                            <option value="2">2층</option>
+                            <option value="3">3층</option>
+                        </select>
+                        <label>건물</label>
+                    </div>
+                    <div class="input-field col offset-s1 s5">
+                        <select>
+                            <option value="" disabled selected>호수를 선택하세요</option>
+                            <option value="1">101호</option>
+                            <option value="2">102호</option>
+                            <option value="3">103호</option>
+                        </select>
+                        <label>호수</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:0px">
+                    <div class="col offset-s1"></div>
+                    <div class="center-align"><h5>창 가</h5></div>
+                </div>
+                <div class="row" style="margin-bottom:0px;">
+                    <div class="col offset-s1 s5 black-text center-align">
+                        <div class="btn-container left-align">
+                            <a class="waves-effect waves-light bed-background-left" href="#bed1"></a>
+                        </div>
+                        <div class="btn-container left-align">
+                            <a class="waves-effect waves-light bed-background-left" href="#bed2"></a>
+                        </div>
+                        <div class="btn-container left-align">
+                            <a class="waves-effect waves-light bed-background-left" href="#bed3"></a>
+                        </div>
+                    </div>
+                    <div class="col offset-s1 s5 black-text center-align">
+                        <div class="btn-container right-align">
+                            <a class="waves-effect waves-light bed-background-right" href="#bed4"></a>
+                        </div>
+                        <div class="btn-container right-align">
+                            <a class="waves-effect waves-light bed-background-right" href="#bed5"></a>
+                        </div>
+                        <div class="btn-container right-align">
+                            <a class="waves-effect waves-light bed-background-right" href="#bed6"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:0px">
+                    <div class="col offset-s1"></div>
+                    <div class="center-align"><h5>출입문</h5></div>
+                </div>
+
+        </div>
+
+    </div>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Medical Recording System</h5>
+                    <p class="grey-text text-lighten-4">This is our Final Project.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-copyright">
+            <div class="container">
+                ©2017 Hansung Univ. DICE
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+
+    $(document).ready(function() {
+        $('select').material_select();
+        $('.modal').modal();
+    });
+
+    toastr.info('환자 정보가 입력되었습니다.', ' ',{timeOut: 0})
+
+    </script>
+
+</body>
+
+</html>

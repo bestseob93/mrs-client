@@ -1,0 +1,94 @@
+<div class="z-depth-1 grey lighten-4 register-form">
+    <div class="row">
+        <div class="input-field col s7">
+            <input class="validate" type="text" name="patientName" id="patientName" required/>
+            <label for="patientName">환자 이름을 입력해주세요</label>
+        </div>
+        <!-- Switch -->
+        <div class="input-field col s5">
+          <select id="gender">
+            <option value="" selected>성별</option>
+            <option value="Male">남</option>
+            <option value="Femaile">여</option>
+          </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input class="validate" type="text" name="patientTel" id="patientTel" required/>
+               <label for="patientTel">전화번호를 입력해주세요</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s4">
+            <div class="input-field inline">
+              <select id="birth-year">
+                <option value="" selected>년도</option>
+                <script>
+                  var myDate = new Date();
+                  var year = myDate.getFullYear();
+                  for(var i = year; i > 1900; i--) {
+                    $('.register-form #birth-year').append('<option value="'+i+'">'+i+'</option>');
+                  }
+                </script>
+              </select>
+            </div>
+        </div>
+        <div class="input-field col s4">
+          <select id="birth-month">
+          <option value="" selected>월</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        </div>
+
+        <div class="col s4">
+            <div class="input-field inline">
+                <input id="birth-day" name="birth-day" type="text" class="validate" required/>
+                <label for="birth-day">일</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input class="validate" type="text" name="address" id="address" required/>
+            <label for="address">주소를 입력해주세요</label>
+        </div>
+    </div>
+
+    <div class="row">
+      <div clas="input-field col s12">
+        <select id="bloodType">
+          <option value="" selected>혈액형 선택</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="O">O</option>
+          <option value="AB">AB</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" name="btn_submit" onClick="onSubmit()" class="col s12 btn waves-effect indigo">작성완료</button>
+    </div>
+    <button type="button" name="btn_submit" onClick="ontest()" class="col s12 btn waves-effect indigo">aa</button>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('select').material_select();
+});
+</script>

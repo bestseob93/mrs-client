@@ -1,0 +1,41 @@
+.register-form {
+  padding: 15px 50px !important;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.login-box {
+  display: 'inline-block';
+  padding: 32px 48px 0px 48px;
+  border: 1px solid #EEE;
+  width: 100%;
+  margin: 20px auto;
+}
+
+@media screen and (min-width: 601px) {
+  .register-form {
+    width: 75%;
+  }
+
+  .login-box {
+    display: 'inline-block';
+    padding: 32px 48px 0px 48px;
+    border: 1px solid #EEE;
+    width: 75%;
+    margin: 20px auto;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .register-form {
+    width: 60%;
+  }
+
+  .login-box {
+    display: 'inline-block';
+    padding: 32px 48px 0px 48px;
+    border: 1px solid #EEE;
+    width: 60%;
+    margin: 20px auto;
+  }
+}

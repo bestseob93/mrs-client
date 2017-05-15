@@ -1,0 +1,79 @@
+.mypage-container {
+
+}
+
+.patient-name {
+  font-size: 24px;
+}
+
+.image-icon {
+  width: 1.5rem;
+  display: block;
+  float: left;
+  text-align: center;
+  margin-top: 0.6rem;
+  margin-left: 0.4rem;
+  margin-right: 1rem;
+  line-height: 3rem;
+}
+
+.image-doctor {
+  width: 200px;
+  height: 200px;
+}
+
+.drug-list {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.more-button {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.patient-info {
+  margin: 40px auto;  
+}
+
+.doctor-container {
+  margin-top: 50px;
+}
+
+.doctor-intro {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.doctor-name {
+  font-size: 18px;
+  margin: 0 !important;
+  font-weight: 500;
+}
+
+.doctor-phone {
+  color: #939393;
+  font-size: 16px;
+  margin: 0 !important;
+}
+
+.doctor-footer {
+  margin-top: 100px;
+}
+
+@media screen and (min-width: 601px) {
+  .drug-list {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .drug-list {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

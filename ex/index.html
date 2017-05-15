@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8"/>
+    <title>MRS 의료 기록 시스템</title>
+    <link rel="stylesheet" href="./common/css/materialize.min.css"/>
+    <link rel="stylesheet" href="./common/css/main.css"/>
+  </head>
+  <body>
+    <header class="container-fluid teal white-text" data-include="header"></header>
+    <main class="container" id="register" data-include="register"></main>
+    <footer class="container-fluid pink white-text" data-include="footer"></footer>
+  </body>
+  <script src="./common/js/jquery-3.2.0.min.js"></script>
+  <script src="./common/js/materialize.min.js"></script>
+  <script src="./common/js/axios.min.js"></script>
+  <script src="./common/js/main.js"></script>
+  <script>
+  $(function(){
+    var includes = $('[data-include]');
+    jQuery.each(includes, function(){
+      var file = './view/' + $(this).data('include') + '.html';
+      $(this).load(file);
+    });
+  });
+
+</script>
+</html>

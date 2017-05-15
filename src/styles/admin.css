@@ -1,0 +1,29 @@
+.btn-container {
+    width: 100%;
+    padding: 30px 60px 30px 60px;
+}
+
+.bed-background-left {
+    background-image: url("./bed_left.png");
+    background-size: cover;
+    width: 100px;
+    height: 46px;
+    background-repeat: no-repeat;
+}
+
+.bed-background-right {
+    background-image: url("./bed_right.png");
+    background-size: cover;
+    width: 100px;
+    height: 46px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.fullheight {
+    height: 800px;
+}
+
+.user {
+    height: 50px;
+}
