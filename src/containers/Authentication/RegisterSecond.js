@@ -6,11 +6,7 @@ import * as auth from 'ducks/auth.duck';
 
 import { RegisterSecondBox } from 'components';
 
-class Register extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class RegisterSecond extends Component {
   render() {
     console.log(this.props);
     return (
@@ -37,4 +33,4 @@ export default connect(
       }, dispatch)
     };
   }
-)(Register);
+)(RegisterSecond);

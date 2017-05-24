@@ -4,8 +4,10 @@ export const AUTH_LOGIN = "AUTH_LOGIN";
 export const AUTH_REGISTER = "AUTH_REGISTER";
 export const PATIENT_INFO = "PATIENT_INFO";
 export const POST_PATIENT_INFO = "POST_PATIENT_INFO";
-export const GET_PATIENT_STATUS = "GET_PATIENT_STATUS";
 export const GET_PATIENT_MY_PAGE = "GET_PATIENT_MY_PAGE";
+export const GET_PATIENT_STATUS = "GET_PATIENT_STATUS";
+export const PATIENT_LOG_OUT = "PATIENT_LOG_OUT";
+export const GET_PATIENT_LIST = "GET_PATIENT_LIST";
 
 export const localLogin = (patientName, patientBarcode) => ({
   type: AUTH_LOGIN,
@@ -35,17 +37,31 @@ export const postPatientInfo = (p_id, b_id, disease, chargeDoctor, medicalCare) 
   }
 });
 
-export const requestPatientStatus = () => ({
-  type: GET_PATIENT_STATUS,
-  payload: {
-    promise: helper.getLoginStatus()
-  }
-});
-
 export const requestGetPatientMyPage = () => ({
   type: GET_PATIENT_MY_PAGE,
   payload: {
     promise: helper.getPatientMyPage()
+  }
+});
+
+export const requestGetPatientStatus = () => ({
+  type: GET_PATIENT_STATUS,
+  payload: {
+    promise: helper.getPatientStatus()
+  }
+});
+
+export const requestLogout = () => ({
+  type: PATIENT_LOG_OUT,
+  payload: {
+    promise: helper.patientLogout()
+  }
+});
+
+export const requsetGetPatientList = () => ({
+  type: GET_PATIENT_LIST,
+  payload: {
+    promise: helper.getPatientList()
   }
 });
 
@@ -67,7 +83,8 @@ const myPageInfos = {
     beduuid: "",
     isChecked: false
   },
-  myMedicals: []
+  myMedicals: [],
+  myInfo: {}
 };
 
 const initialState = {
@@ -79,8 +96,10 @@ const initialState = {
     valid: false
   },
   patientMore: { ...patientMores },
-  myPageRequest: { ... requests },
-  myPageInfo: { ... myPageInfos }
+  myPageRequest: { ...requests },
+  myPageInfo: { ...myPageInfos },
+  getListRequest: { ...requests },
+  patientList: []
 };
 
 const pending = {fetching: true, fetched: false, error: null};
@@ -166,29 +185,6 @@ export default function reducer(state=initialState, action) {
         ...state,
         postRequest: { ...rejected, error: payload }
       };
-    case `${GET_PATIENT_STATUS}_PENDING`:
-      return {
-        ...state,
-        authStatus: {
-          logged: true
-        }
-      };
-    case `${GET_PATIENT_STATUS}_FULFILLED`:
-      return {
-        ...state,
-        authStatus: {
-          logged: true,
-          valid: true
-        }
-      };
-    case `${GET_PATIENT_STATUS}_REJECTED`:
-      return {
-        ...state,
-        authStatus: {
-          logged: false,
-          valid: false
-        }
-      };
     case `${GET_PATIENT_MY_PAGE}_PENDING`:
       return {
         ...state,
@@ -204,13 +200,75 @@ export default function reducer(state=initialState, action) {
             beduuid: payload.data[1].beduuid,
             isChecked: payload.data[1].isChecked
           },
-          myMedicals: payload.data[2]
+          myMedicals: payload.data[2],
+          myInfo: payload.data[3]
         }
       };
     case `${GET_PATIENT_MY_PAGE}_REJECTED`:
       return {
         ...state,
         myPageRequest: { ...rejected, error: payload }
+      };
+    case `${GET_PATIENT_STATUS}_PENDING`:
+      return {
+        ...state,
+        authStatus: {
+          logged: true
+        }
+      };
+    case `${GET_PATIENT_STATUS}_FULFILLED`:
+      return {
+        ...state,
+        authStatus: {
+          logged: true,
+          valid: false
+        }
+      };
+    case `${GET_PATIENT_STATUS}_REJECTED`:
+      return {
+        ...state,
+        authStatus: {
+          logged: false,
+          valid: false
+        }
+      };
+    case `${PATIENT_LOG_OUT}_PENDING`:
+      return {
+        ...state,
+        authStatus: {
+          logged: false
+        }
+      };
+    case `${PATIENT_LOG_OUT}_FULFILLED`:
+      return {
+        ...state,
+        authStatus: {
+          logged: false,
+          valid: false
+        }
+      };
+    case `${PATIENT_LOG_OUT}_REJECTED`:
+      return {
+        ...state,
+        authStatus: {
+          logged: true
+        }
+      };
+    case `${GET_PATIENT_LIST}_PENDING`:
+      return {
+        ...state,
+        getListRequest: { ...pending }
+      };
+    case `${GET_PATIENT_LIST}_FULFILLED`:
+      return {
+        ...state,
+        getListRequest: { ...fulfilled },
+        patientList: payload.data.patients
+      };
+    case `${GET_PATIENT_LIST}_REJECTED`:
+      return {
+        ...state,
+        getListRequest: { ...rejected, error: payload.data.error }
       };
     default:
       return state;

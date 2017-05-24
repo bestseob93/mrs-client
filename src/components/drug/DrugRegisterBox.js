@@ -99,6 +99,7 @@ class DrugRegisterBox extends Component {
                                                                                                          width="150"
                                                                                                          height="150"
                                                                                                          src={file.preview}
+                                                                                                         alt={file.name}
                                                                                                          onClick={onOpenClick}/>)}
                                                         </div>
                                                       </div> : undefined }
@@ -129,7 +130,7 @@ class DrugRegisterBox extends Component {
             <Input s={12} label="사용상 주의사항" name="drugCaution" onChange={handleChange} value={this.state.drugCaution}/>
           </Row>
           <Row>
-            <Button className="col offset-s3 s2 btn btn-small effect grey">취소</Button>
+            <Button className="col offset-s3 s2 btn btn-small effect grey" onClick={clearInfo}>취소</Button>
             <Button className="col offset-s2 s2 btn btn-small effect indigo" onClick={handleSubmit}>완료</Button>
           </Row>
       </div>

@@ -9,20 +9,8 @@ class LoginBox extends Component {
       patientBarcode: ''
     };
 
-    this.onInputFocus = this.onInputFocus.bind(this);
-    this.onInputBlur = this.onInputBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  onInputFocus(e) {
-    e.target.parentNode.classList.add('input--filled');
-  }
-
-  onInputBlur(e) {
-    if(e.target.value === '') {
-      e.target.parentNode.classList.remove('input--filled');
-    }
   }
 
   handleSubmit() {
@@ -37,7 +25,7 @@ class LoginBox extends Component {
   }
 
   render() {
-    const { onInputFocus, onInputBlur, handleSubmit, handleChange } = this;
+    const { handleSubmit, handleChange } = this;
     return (
               <div className="z-depth-1 grey lighten-4 login-box">
                   <div className="row">
@@ -48,14 +36,14 @@ class LoginBox extends Component {
                   <div className="row">
                     <div className="input-field col s12">
                       <input onChange={handleChange} className="validate" type="text" name="patientName" id="patientName" />
-                      <label for="patientName">환자 분 성함을 입력해주세요.</label>
+                      <label htmlFor="patientName">환자 분 성함을 입력해주세요.</label>
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="input-field col s12">
                       <input onChange={handleChange} className="validate" type="password" name="patientBarcode" id="patientBarcode" />
-                      <label for="patientBarcode">손목에 환자번호를 입력해주세요.</label>
+                      <label htmlFor="patientBarcode">손목에 환자번호를 입력해주세요.</label>
                     </div>
                     <label className="right">
       								<a className="pink-text" href="#!"><b>번호를 잃어버리셨나요?</b></a>

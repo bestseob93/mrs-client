@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Input, Button } from 'react-materialize';
+import { Row, Col, Input, Button } from 'react-materialize';
+import Dropzone from 'react-dropzone';
+import axios from 'axios';
 
 class DoctorRegisterBox extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class DoctorRegisterBox extends Component {
     this.state = {
       job: '',
       doctorName: '',
+      doctorFace: [],
       doctorYear: '',
       doctorMonth: '',
       doctorDay: '',
@@ -14,8 +17,11 @@ class DoctorRegisterBox extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.onOpenClick = this.onOpenClick.bind(this);
     this.clearInfo = this.clearInfo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTestSubmit = this.handleTestSubmit.bind(this);
     this.renderYears = this.renderYears.bind(this);
     this.renderDays = this.renderDays.bind(this);
   }
@@ -26,11 +32,23 @@ class DoctorRegisterBox extends Component {
     this.setState(nextState);
   }
 
+  onDrop(acceptedFiles) {
+    let file = acceptedFiles;
+    this.setState({
+      doctorFace: file
+    });
+  }
+
+  onOpenClick() {
+    this.dropzone.open();
+  }
+
 
   clearInfo() {
     this.setState({
       job: '',
       doctorName: '',
+      doctorFace: [],
       doctorYear: '',
       doctorMonth: '',
       doctorDay: '',
@@ -42,10 +60,25 @@ class DoctorRegisterBox extends Component {
     const { DoctorActions } = this.props;
     let job = this.state.job;
     let doctorName = this.state.doctorName;
+    let doctorFace = this.state.doctorFace;
     let birth = this.state.doctorYear + this.state.doctorMonth + this.state.doctorDay;
     let department = this.state.department;
 
-    await DoctorActions.requestDoctorRegister(job, doctorName, birth, department);
+    await DoctorActions.requestDoctorRegister(job, doctorName, doctorFace, birth, department);
+  }
+
+  handleTestSubmit() {
+    let personGroupId = "doctor";
+
+    axios({
+      method: 'POST',
+      url: `http://13.124.126.30:3000/api/v1/doctor/azureTest`,
+      data: {
+        doctorName: "hyeonsdgEun"
+      }
+    }).then(res => {
+      console.log(res);
+    }).catch(err => console.error(err));
   }
 
   renderYears() {
@@ -77,15 +110,43 @@ class DoctorRegisterBox extends Component {
 
   render() {
     const { handleChange,
-            clearInfo,
             handleSubmit,
+            handleTestSubmit,
             renderYears,
-            renderDays } = this;
+            renderDays,
+            onOpenClick,
+            onDrop } = this;
 
     const { isFetching } = this.props;
 
     return (
       <div className="z-depth-1 grey lighten-4 register-form">
+          <Row>
+            <Col s={12} m={12} l={12}>
+              {this.state.doctorFace.length > 0 ? <div className="dropzone-hidden">
+                                                      <Dropzone ref={(node) => { this.dropzone = node; }}
+                                                                onDrop={onDrop}
+                                                                multiple={false}>
+                                                      </Dropzone>
+                                                    </div> :
+                                                    <div className="auth-profile center">
+                                                      <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={onDrop} multiple={false}>
+                                                        <p>본인의 얼굴 사진을 올려주세요</p>
+                                                      </Dropzone>
+                                                    </div>}
+                {this.state.doctorFace.length > 0 ? <div className="center">
+                                                        <span onClick={onOpenClick}>다른 사진으로 바꾸기</span>
+                                                        <div>{this.state.doctorFace.map((file) => <img className="circle auth-profile-img "
+                                                                                                         key={file.name}
+                                                                                                         width="150"
+                                                                                                         height="150"
+                                                                                                         src={file.preview}
+                                                                                                         alt={file.name}
+                                                                                                         onClick={onOpenClick}/>)}
+                                                        </div>
+                                                      </div> : undefined }
+            </Col>
+          </Row>
           <Row>
             <Input s={12} type='select' onChange={handleChange} name="job" value={this.state.job}>
               <option value="간호사">간호사</option>
@@ -140,11 +201,13 @@ class DoctorRegisterBox extends Component {
               <option value="치과">치과</option>
               <option value="피부과">피부과</option>
             </Input>
-
           </Row>
 
           <Row className="center">
               <Button type="submit" onClick={handleSubmit} waves="light" name="btn_submit">{isFetching ? '로딩중 ...' : '다음'}</Button>
+          </Row>
+          <Row className="center">
+              <Button type="button" onClick={handleTestSubmit} waves="light">테스트</Button>
           </Row>
       </div>
     );

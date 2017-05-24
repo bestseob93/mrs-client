@@ -22,7 +22,7 @@ class Register extends Component {
 
   render() {
     const { handleSubmit } = this;
-    const { AuthActions, isFetching } = this.props;
+    const { isFetching } = this.props;
     return (
       <div>
          <RegisterBox onSubmit={handleSubmit} isFetching={isFetching}/>

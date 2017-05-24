@@ -2,7 +2,7 @@ import axios from 'axios';
 import { checkStatus } from './checkStatus';
 import { browserHistory } from 'react-router';
 
-const ROOT_URL = 'http://13.124.26.215:3000/api/v1/patient';
+const ROOT_URL = 'http://13.124.126.30:3000/api/v1/patient';
 
 export function loginPatient(patientName, patientBarcode) {
 
@@ -17,8 +17,9 @@ export function loginPatient(patientName, patientBarcode) {
     .then(response => {
       console.log(response);
       localStorage.setItem('mytoken', response.data.token);
+      browserHistory.push('/myPage');
   }).catch(err => {
-      throw err;
+      return err;
   });
 }
 
@@ -66,7 +67,7 @@ export function postPatientFinal(p_id, b_id, disease, chargeDoctor, medicalCare)
     data: {
       disease: disease,
       doctor_id: chargeDoctor,
-      medicalCare_id: medicalCare
+      medicalCareArr: medicalCare
     }
   }).then(checkStatus)
     .then((response) => {
@@ -79,25 +80,48 @@ export function postPatientFinal(p_id, b_id, disease, chargeDoctor, medicalCare)
   });
 }
 
-export function getLoginStatus() {
-  return axios.get(`${ROOT_URL}/getinfo`)
-              .then(checkStatus)
-              .then((response) => {
-                return response;
-              }).catch((error) => {
-                console.log(error);
-                return error;
-              });
-}
-
 export function getPatientMyPage() {
+  let token = localStorage.getItem('mytoken');
   return axios({
     method: 'GET',
-    url: `${ROOT_URL}/myPage`
+    url: `${ROOT_URL}/myPage`,
+    headers: {
+      'Authorization': token
+    }
   }).then(checkStatus)
     .then((response) => {
       return response;
   }).catch((error) => {
       return error;
   });
+}
+
+export function getPatientStatus() {
+  return new Promise((resolve, reject) => {
+    let token = localStorage.getItem('mytoken');
+    if(token) {
+      resolve();
+    } else {
+      reject();
+    }
+  });
+}
+
+export function patientLogout() {
+  return new Promise((resolve, reject) => {
+    localStorage.removeItem('mytoken');
+    resolve();
+  });
+}
+
+export function getPatientList() {
+  return axios({
+    method: 'GET',
+    url: `${ROOT_URL}`
+  }).then(checkStatus)
+    .then((response) => {
+      return response;
+  }).catch(err => {
+      return err;
+  })
 }

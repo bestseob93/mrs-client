@@ -15,6 +15,7 @@ import 'styles/Authentication/mypage.css';
 import 'styles/Normalize.css';
 import 'styles/Home.css';
 import 'styles/admin.css';
+import "styles/video-react.css";
 
 const rootElement = document.querySelector('#root');
 ReactDOM.render(

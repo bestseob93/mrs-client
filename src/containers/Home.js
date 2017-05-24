@@ -7,10 +7,8 @@ class Home extends Component {
       <div>
         <section className="background" id="background">
           <div className="background-text">
-            <div className="col m6 s10 l6">
-              <h1 className="white-text main-title">Integration used to take forever. <br/> Now it takes seconds.</h1>
-              <h5 className="white-text">The low code development platform to build <br/> with APIs as if they were building blocks.</h5>
-              <Link to="/Login" className="btn waves-effect waves-light yellow darken-2 segment-track-link"><span className="dark-grey-text">&emsp;&emsp;login&emsp;&emsp;</span></Link>
+            <div className="col m6 s10 l6" style={{paddingTop: 200}}>
+              <Link to="/Login" className="btn waves-effect waves-light teal darken-2 segment-track-link"><span className="dark-grey-text">&emsp;&emsp;login&emsp;&emsp;</span></Link>
             </div>
           </div>
         </section>
@@ -34,7 +32,7 @@ class Home extends Component {
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>mail</i>minho5024@gmail.com</p>
                         </div>
                         <div className="card-reveal" style={{display: 'none', transform: 'translateY(0px)'}}>
-                          <span className="card-title grey-text text-darken-4">강민호 <i className="mdi-navigation-close right"></i></span>
+                          <span className="card-title grey-text text-darken-4">강민호 <i className="material-icons right">close</i></span>
                           <p>스타로 나를 이기려면 10년 더 연습하고 와라.</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_identity</i>Hardware Master</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_phone_msg</i>+82 10 9920 2704</p>
@@ -57,7 +55,7 @@ class Home extends Component {
                             <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>mail</i>floyd9@naver.com</p>
                         </div>
                         <div className="card-reveal" style={{display: 'none', transform: 'translateY(0px)'}}>
-                          <span className="card-title grey-text text-darken-4">권형은 <i className="mdi-navigation-close right"></i></span>
+                          <span className="card-title grey-text text-darken-4">권형은 <i className="material-icons right">close</i></span>
                           <p>배그로 나를 이기려면 10년 더 연습하고 와라.</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_identity</i>Hardware Manager</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_phone_msg</i>+82 10 4721 3041</p>
@@ -80,7 +78,7 @@ class Home extends Component {
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>mail</i>bestseob93@gmail.com</p>
                         </div>
                         <div className="card-reveal" style={{display: 'none', transform: 'translateY(0px)'}}>
-                          <span className="card-title grey-text text-darken-4">이환섭<i className="mdi-navigation-close right"></i></span>
+                          <span className="card-title grey-text text-darken-4">이환섭 <i className="material-icons right">close</i></span>
                           <p>똘끼로 나를 이기려면 10년 더 연습하고 와라.</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_identity</i>Server X Web Master</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_phone_msg</i>+82 10 2448 7085</p>
@@ -103,7 +101,7 @@ class Home extends Component {
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>mail</i>qkrwnaks92@gmail.com</p>
                         </div>
                         <div className="card-reveal" style={{display: 'none', transform: 'translateY(0px)'}}>
-                          <span className="card-title grey-text text-darken-4">박주만<i className="mdi-navigation-close right"></i></span>
+                          <span className="card-title grey-text text-darken-4">박주만 <i className="material-icons right">close</i></span>
                           <p>농구로 나를 이기려면 10년 더 연습하고 와라.</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_identity</i>Web Manager</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_phone_msg</i>+82 10 3312 6316</p>
@@ -126,7 +124,7 @@ class Home extends Component {
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>mail</i>alalap119@naver.com</p>
                         </div>
                         <div className="card-reveal" style={{display: 'none', transform: 'translateY(0px)'}}>
-                          <span className="card-title grey-text text-darken-4">김택경<i className="mdi-navigation-close right"></i></span>
+                          <span className="card-title grey-text text-darken-4">김택경 <i className="material-icons right">close</i></span>
                           <p>나의 티모 대위를 이기려면 10년 더 연습하고 와라.</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_identity</i>Web Manager</p>
                           <p><i className="material-icons cyan-text text-darken-2" style={{fontSize: '14px'}}>perm_phone_msg</i>+82 10 5104 5364</p>
@@ -142,7 +140,7 @@ class Home extends Component {
         <section id="introduceProduct">
           <div className="container">
             <div className="row">
-              <img width="100%"  src="img/1.jpg" alt=""/>
+              <div className="main-description"></div>
             </div>
           </div>
         </section>

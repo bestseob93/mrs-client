@@ -10,11 +10,12 @@ class RegisterSecondBox extends Component {
       disease: '',
       chargeDoctor: '',
       beds: '',
-      medicalCare: ''
+      medicalCare: []
     };
 
     this.handleDisease = this.handleDisease.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleOptions = this.handleOptions.bind(this);
     this.renderDoctors = this.renderDoctors.bind(this);
     this.renderBeds = this.renderBeds.bind(this);
     this.renderMedicals = this.renderMedicals.bind(this);
@@ -36,6 +37,20 @@ class RegisterSecondBox extends Component {
     let nextState = {};
     nextState[e.target.name] = e.target.value;
     this.setState(nextState);
+  }
+
+  handleOptions(e) {
+    let options = e.target.options;
+    let value = [];
+    for(let i = 0; i < options.length; i++) {
+      if(options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+
+    this.setState({
+      medicalCare: value
+    });
   }
 
   renderDoctors(doctorsData) {
@@ -78,6 +93,7 @@ class RegisterSecondBox extends Component {
   render() {
     const { handleDisease,
             handleChange,
+            handleOptions,
             renderDoctors,
             renderBeds,
             renderMedicals,
@@ -89,9 +105,20 @@ class RegisterSecondBox extends Component {
 
 
     if(isFetching) {
-      return (
-        <div>
-        Loading...</div>
+      (
+      <div className="center" style={{verticalAlign: 'middle'}}>
+          <div className="preloader-wrapper big active">
+            <div className="spinner-layer spinner-blue-only">
+              <div className="circle-clipper left">
+                <div className="circle"></div>
+              </div><div className="gap-patch">
+                <div className="circle"></div>
+              </div><div className="circle-clipper right">
+                <div className="circle"></div>
+              </div>
+            </div>
+          </div>
+      </div>
       );
     } else {
         const doctorsData = patientSelects.doctors;
@@ -119,7 +146,7 @@ class RegisterSecondBox extends Component {
           </Row>
 
           <Row>
-              <Input s={12} type='select' label="약제" onChange={handleChange} name="medicalCare" value={this.state.medicalCare}>
+              <Input s={12} type='select' label="약제" multiple onChange={handleOptions} name="medicalCare" value={this.state.medicalCare}>
                 <option value="aids">에이즈</option>
                 {renderMedicals(medicalData)}
               </Input>

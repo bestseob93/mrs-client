@@ -2,10 +2,10 @@ import * as helper from 'helpers/doctor.helper';
 
 export const REGISTER_DOCTOR = "REGISTER_DOCTOR";
 
-export const doctorRegister = (job, doctorName, birth, department) => ({
+export const doctorRegister = (job, doctorName, doctorFace, birth, department) => ({
   type: REGISTER_DOCTOR,
   payload: {
-    promise: helper.requestDoctorRegister(job, doctorName, birth, department)
+    promise: helper.requestDoctorRegister(job, doctorName, doctorFace, birth, department)
   }
 });
 

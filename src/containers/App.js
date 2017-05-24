@@ -1,58 +1,27 @@
 import React, { Component } from 'react';
-import { Header, AppFooter } from 'components';
+import { Header } from 'components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as auth from 'ducks/auth.duck';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  componentDidMount() {
-    function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
-        if (parts.length == 2) return parts.pop().split(";").shift();
-    }
+  async componentDidMount() {
+    const { AuthActions } = this.props;
 
-    // get loginData from cookie
-    let loginData = getCookie('key');
-
-    // if loginData is undefined, do nothing
-    if(typeof loginData === "undefined") return;
-
-    // decode base64 & parse json
-    loginData = JSON.parse(atob(loginData));
-    // if not logged in, do nothing
-    if(!loginData.isLogged) return;
-
-    console.log(loginData);
-    this.props.AuthActions.checkStatus().then(
-      () => {
-        console.log(this.props.valid);
-        if(!this.props.valid) {
-          loginData = {
-            isLogged: false,
-            patientName: ''
-          };
-
-          document.cookie='key=' + btoa(JSON.stringify(loginData));
-        }
-      }
-    )
+    await AuthActions.requestGetStatus();
   }
 
   render() {
-    const { isLogged } = this.props;
+    const { isLogged, AuthActions } = this.props;
     let re = /(login|register|RegisterSecond)/;
     let isAuth = re.test(this.props.location.pathname);
 
     return (
       <div className="app-container">
         <header>
-          { isAuth ? ( <Header/> ) : ( <Header isLogged={isLogged}/> )}
+          { isAuth ? ( <Header/> ) : ( <Header isLogged={isLogged} onLogout={AuthActions.requestLogout}/> )}
         </header>
         <main>
           {this.props.children}
@@ -71,9 +40,12 @@ export default connect(
       valid: state.auth.authStatus.valid
     }
   },
-  dispatch => ({
+  dispatch => {
+    return {
       AuthActions: bindActionCreators({
-        checkStatus: auth.requestPatientStatus
+        requestGetStatus: auth.requestGetPatientStatus,
+        requestLogout: auth.requestLogout
       }, dispatch)
-  })
+    };
+  }
 )(App);

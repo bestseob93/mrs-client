@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { MedicalInfoComponent } from 'components';
 
-class MyPageComponent extends Component {
+class MedicalInfo extends Component {
 
   render() {
+    console.log(this.props);
     return (
       <div>
-        <MedicalInfoComponent/>
+        <MedicalInfoComponent myMedical={this.props.patientMyInfos.myMedicals}/>
       </div>
     );
   }
 }
 
-export default MyPageComponent;
+export default connect(
+  state => {
+    return {
+      patientMyInfos: state.auth.myPageInfo
+    };
+  },
+  null
+)(MedicalInfo);
