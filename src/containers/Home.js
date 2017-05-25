@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 class Home extends Component {
@@ -8,7 +9,7 @@ class Home extends Component {
         <section className="background" id="background">
           <div className="background-text">
             <div className="col m6 s10 l6" style={{paddingTop: 200}}>
-              <Link to="/Login" className="btn waves-effect waves-light teal darken-2 segment-track-link"><span className="dark-grey-text">&emsp;&emsp;login&emsp;&emsp;</span></Link>
+              {this.props.isLogged ? "" : (<Link to="/Login" className="btn waves-effect waves-light teal darken-2 segment-track-link"><span className="dark-grey-text">&emsp;&emsp;login&emsp;&emsp;</span></Link>)}
             </div>
           </div>
         </section>
@@ -140,7 +141,9 @@ class Home extends Component {
         <section id="introduceProduct">
           <div className="container">
             <div className="row">
-              <div className="main-description"></div>
+              <div className="main-description">
+                <img src="./commons/main_desc.jpeg"/>
+              </div>
             </div>
           </div>
         </section>
@@ -149,4 +152,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect(
+  state => {
+    return {
+       isLogged: state.auth.authStatus.logged
+    };
+  }
+)(Home);

@@ -206,9 +206,6 @@ class DoctorRegisterBox extends Component {
           <Row className="center">
               <Button type="submit" onClick={handleSubmit} waves="light" name="btn_submit">{isFetching ? '로딩중 ...' : '다음'}</Button>
           </Row>
-          <Row className="center">
-              <Button type="button" onClick={handleTestSubmit} waves="light">테스트</Button>
-          </Row>
       </div>
     );
   }

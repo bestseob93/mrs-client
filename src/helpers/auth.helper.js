@@ -2,7 +2,7 @@ import axios from 'axios';
 import { checkStatus } from './checkStatus';
 import { browserHistory } from 'react-router';
 
-const ROOT_URL = '/api/v1/patient';
+const ROOT_URL = 'http://13.124.126.30:3000/api/v1/patient';
 
 export function loginPatient(patientName, patientBarcode) {
 

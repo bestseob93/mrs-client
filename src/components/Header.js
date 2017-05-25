@@ -9,7 +9,7 @@ class Header extends Component {
     if(isLogged) {
       navItems = (
         <div className="nav-wrapper teal">
-          <a href="/" className="brand-logo">MRS</a>
+          <a href="/" className="brand-logo"><img className="brand-image" src="http://13.124.126.30:3000/commons/MRS_white.png"/></a>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">
             <li><a href="/MyPage/MedicalInfo"><span>투여 약/주사 정보</span></a></li>
@@ -28,16 +28,16 @@ class Header extends Component {
     } else {
       navItems = (
         <div className="nav-wrapper teal">
-          <a href="/" className="brand-logo">MRS</a>
+          <a href="/" className="brand-logo"><img className="brand-image" src="http://13.124.126.30:3000/commons/MRS_white.png"/></a>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">
-            <li><a href="#introduceTeam"><span>팀원 소개</span></a></li>
-            <li><a href="#introduceProduct"><span>제품 소개</span></a></li>
+            <li><a href="/"><span>팀원 소개</span></a></li>
+            <li><a href="/"><span>제품 소개</span></a></li>
             <li><a href="/Login"><span>로그인</span></a></li>
           </ul>
           <ul className="side-nav" id="mobile-demo">
-            <li><a href="#introduceTeam"><span>팀원 소개</span></a></li>
-            <li><a href="#introduceProduct"><span>제품 소개</span></a></li>
+            <li><a href="/"><span>팀원 소개</span></a></li>
+            <li><a href="/"><span>제품 소개</span></a></li>
             <li><a href="/Login"><span>로그인</span></a></li>
           </ul>
         </div>

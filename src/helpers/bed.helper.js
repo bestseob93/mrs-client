@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { checkStatus } from './checkStatus';
 
-const ROOT_URL = '/api/v1/bed';
+const ROOT_URL = 'http://13.124.126.30:3000/api/v1/bed';
 
 export function getBedList() {
     return axios({
