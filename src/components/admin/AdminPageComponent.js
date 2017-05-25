@@ -149,7 +149,6 @@ class AdminPageComponent extends Component {
 
             <div className="row" style={{marginBottom: 0}}>
                 <div className="col offset-s1 s5 black-text center-align">
-                    {renderPatientInfo(this.props.patients)}
                     {renderBedInfos(bedInfo, patients)}
                 </div>
             </div>

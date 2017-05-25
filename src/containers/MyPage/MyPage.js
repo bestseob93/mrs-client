@@ -22,7 +22,7 @@ class MyPage extends Component {
                   <span><strong className="patient-name">{this.props.patientMyInfos.myInfo.patientName}</strong>님의 쾌유를 위하여 최선을 다하겠습니다.</span>
               </Col>
            </Row>
-            {this.props.location.pathname === "/MyPage" ? (   <MyPageComponent myInfo={this.props.patientMyInfos.myInfo}/>) : ""}
+            {this.props.location.pathname === "/myPage" ? (   <MyPageComponent myInfo={this.props.patientMyInfos.myInfo}/>) : ""}
 
             {this.props.children}
           </div>
