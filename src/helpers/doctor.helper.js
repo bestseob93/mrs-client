@@ -2,7 +2,7 @@ import axios from 'axios';
 import { checkStatus } from './checkStatus';
 import { browserHistory } from 'react-router';
 
-const ROOT_URL = 'http://13.124.126.30:3000/api/v1/doctor';
+const ROOT_URL = '/api/v1/doctor';
 
 export function requestDoctorRegister(job, doctorName, doctorFace, birth, department) {
   const ab = Array.prototype.slice.call(doctorFace);

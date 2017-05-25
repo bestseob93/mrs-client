@@ -5,7 +5,7 @@ class MyPageComponent extends Component {
   render() {
     const { beduuid, myInfo } = this.props;
     console.log(myInfo);
-    const URL = "http://13.124.126.30:3000/commons";
+    const URL = "./commons";
     return (
       <div className="mypage-container">
 
