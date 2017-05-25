@@ -63,7 +63,7 @@ class AdminPageComponent extends Component {
                     </div>
 
                     <div className="row modal-footer">
-                         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={leaveHospital(patients[patientIndex]._id)}>확인</a>
+                         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={() => leaveHospital(patients[patientIndex]._id)}>확인</a>
                      </div>
             </Modal>
       );
