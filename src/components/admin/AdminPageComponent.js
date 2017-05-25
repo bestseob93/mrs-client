@@ -9,6 +9,7 @@ class AdminPageComponent extends Component {
 
       this.renderBedInfos = this.renderBedInfos.bind(this);
       this.renderPatientInfo = this.renderPatientInfo.bind(this);
+      this.leaveHospital = this.leaveHospital.bind(this);
   }
 
   componentWillMount() {
@@ -23,6 +24,7 @@ class AdminPageComponent extends Component {
 
 
   renderBedInfos(bedInfo, patients) {
+      const { leaveHospital } = this;
       console.log(patients);
       let isPatientInBed;
       let patientIndex;
@@ -91,7 +93,7 @@ class AdminPageComponent extends Component {
                         </div>
 
                         <div className="row modal-footer">
-                            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">확인</a>
+                            <a href="#!" className="red modal-action modal-close waves-effect waves-green btn-flat" onClick={leaveHospital(item._id)}>퇴원</a>
                         </div>
                 </Modal>
         ));

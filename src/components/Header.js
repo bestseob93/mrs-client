@@ -28,7 +28,7 @@ class Header extends Component {
     } else {
       navItems = (
         <div className="nav-wrapper teal">
-          <a href="/" className="brand-logo">Logo</a>
+          <a href="/" className="brand-logo">MRS</a>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">
             <li><a href="/"><span>팀원 소개</span></a></li>

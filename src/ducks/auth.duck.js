@@ -8,6 +8,7 @@ export const GET_PATIENT_MY_PAGE = "GET_PATIENT_MY_PAGE";
 export const GET_PATIENT_STATUS = "GET_PATIENT_STATUS";
 export const PATIENT_LOG_OUT = "PATIENT_LOG_OUT";
 export const GET_PATIENT_LIST = "GET_PATIENT_LIST";
+export const LEAVE_HOSPITAL = "LEAVE_HOSPITAL";
 
 export const localLogin = (patientName, patientBarcode) => ({
   type: AUTH_LOGIN,
@@ -62,6 +63,13 @@ export const requsetGetPatientList = () => ({
   type: GET_PATIENT_LIST,
   payload: {
     promise: helper.getPatientList()
+  }
+});
+
+export const requestLeaveHospital = (id) => ({
+  type: LEAVE_HOSPITAL,
+  payload: {
+    promise: helper.leaveHospital(id)
   }
 });
 
@@ -269,6 +277,18 @@ export default function reducer(state=initialState, action) {
       return {
         ...state,
         getListRequest: { ...rejected, error: payload.data.error }
+      };
+    case `${LEAVE_HOSPITAL}_PENDING`:
+      return {
+        ...state
+      };
+    case `${LEAVE_HOSPITAL}_FULFILLED`:
+      return {
+        ...state
+      };
+    case `${LEAVE_HOSPITAL}_REJECTED`:
+      return {
+        ...state
       };
     default:
       return state;

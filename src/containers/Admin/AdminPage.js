@@ -44,7 +44,8 @@ export default connect(
         requestBedList: bed.requestGetBedList
       }, dispatch),
       AuthActions: bindActionCreators({
-        requestPatientList: auth.requsetGetPatientList
+        requestPatientList: auth.requsetGetPatientList,
+        requestLeaveHospital: auth.requestLeaveHospital
       }, dispatch)
     };
   }

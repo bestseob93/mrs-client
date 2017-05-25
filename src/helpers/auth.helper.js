@@ -123,5 +123,17 @@ export function getPatientList() {
       return response;
   }).catch(err => {
       return err;
-  })
+  });
+}
+
+export function leaveHospital(id) {
+  return axios({
+    method: 'POST',
+    url: `${ROOT_URL}/leave/${id}`
+  }).then(checkStatus)
+    .then((response) => {
+      return response;
+  }).catch(err => {
+      return err;
+  });
 }
