@@ -8,7 +8,6 @@ class AdminPageComponent extends Component {
       super(props);
 
       this.renderBedInfos = this.renderBedInfos.bind(this);
-      this.renderPatientInfo = this.renderPatientInfo.bind(this);
       this.leaveHospital = this.leaveHospital.bind(this);
   }
 
@@ -64,45 +63,21 @@ class AdminPageComponent extends Component {
                     </div>
 
                     <div className="row modal-footer">
-                         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">확인</a>
+                         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={leaveHospital(patients[patientIndex]._id)}>확인</a>
                      </div>
             </Modal>
       );
     }
   }
 
-  renderPatientInfo(datas) {
-    const mappedDatas = datas.map((item) => (
-                    <Modal id={`${item._id}`} className="modal" trigger={
-                    <div className="btn-container left-align">
-                        <a className="waves-effect waves-light bed-background-left" href={`${item._id}`}></a>
-                    </div>}>
-                    <div className="modal-content">
-                        <div className="row"><h4>침상정보</h4></div>
-                            <div className="row">
-                                <div className="col s9">이름: {item.patientName}
-                                    <div>성별 : {item.gender}</div>
-                                    <div>전화번호 : {item.patientTel}</div>
-                                    <div>생일 : {item.birth}</div>
-                                    <div>주소 : {item.address}</div>
-                                    <div>혈액형 : {item.bloodType}</div>
-                                    <div>병명 : {item.disease}</div>
-                                    <div>특이사항</div>
-                                </div>
-                        </div>
-                        </div>
+  leaveHospital(id) {
+      const { AuthActions } = this.props;
 
-                        <div className="row modal-footer">
-                            <a href="#!" className="red modal-action modal-close waves-effect waves-green btn-flat" onClick={leaveHospital(item._id)}>퇴원</a>
-                        </div>
-                </Modal>
-        ));
-
-    return mappedDatas;
+      AuthActions.requestLeaveHospital(id);
   }
 
   render() {
-    const { renderBedInfos, renderPatientInfo } = this;
+    const { renderBedInfos } = this;
     const { bedInfo, patients, isListFetching } = this.props;
     console.log(patients);
     if(isListFetching) {
