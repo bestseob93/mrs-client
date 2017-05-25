@@ -96,7 +96,6 @@ class AdminPageComponent extends Component {
                 <div className="white-text admin-nav"><Link to="/Register" className="waves-effect waves-light btn-large">환자등록</Link></div>
                 <div className="white-text admin-nav"><Link to="/DoctorRegister" className="waves-effect waves-light btn-large">의사등록</Link></div>
                 <div className="white-text admin-nav"><Link to="/Admin" className="waves-effect waves-light btn-large">침상현황</Link></div>
-                <div className="white-text admin-nav"><Link to="/PatientList" className="waves-effect waves-light btn-large">환자목록</Link></div>
             </div>
         </div>  {/*<!-- 여기까지 네비게이션 바-->*/}
 
