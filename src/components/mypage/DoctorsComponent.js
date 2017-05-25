@@ -14,7 +14,7 @@ class DoctorsComponent extends Component {
           <p className="doctor-phone">010-9682-3215</p>
         </Col>
         <Col s={12} l={4} m={4}>
-          <img src="../commons/juman.jpeg" alt="" className="circle image-doctor"/>
+          <img src={myDoctors.doctorFace} alt="" className="circle image-doctor"/>
           <p className="doctor-intro">힘찬병원 {myDoctors.department}</p>
           <p className="doctor-name">{myDoctors.job + " " + myDoctors.doctorName}</p>
           <p className="doctor-phone">010-2448-7085</p>
